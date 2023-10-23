@@ -151,7 +151,10 @@ def prettify(raw_keys, carrier=38_000):
             format = d.copy()
             data = format.pop('data')
             timebase = format.pop('timebase')
-            gap = format.pop('gap')
+            try:
+                gap = format.pop('gap')
+            except KeyError:
+                gap = 0
 
             for k, v in list(format.items()):
                 if not v:
