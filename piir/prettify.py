@@ -1,3 +1,5 @@
+import os
+import sys
 from .util import bytes_to_bits, bits_to_bytes, hexify
 
 def most_frequent(xs):
@@ -145,6 +147,7 @@ def prettify(raw_keys, carrier=38_000):
     gaps = []
     keys = {}
     data_per_format = []
+
     for name, raw_data in raw_keys.items():
         data_list = []
         for d in raw_data:
