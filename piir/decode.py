@@ -169,6 +169,8 @@ def decode_ppm(pulses, msb_first=False):
         bits = len(bits),
         data = bits_to_bytes(bits, msb_first),
         postamble = postamble,
+        # generate hash here
+        hash = hex(hash(bits_to_bytes(bits, msb_first)))
     )
 
 # Manchester coding
@@ -215,10 +217,14 @@ def decode_manchester(
         msb_first = msb_first,
         bits = len(bits),
         data = bits_to_bytes(bits, msb_first),
+        # generate hash here
+        hash = hex(hash(bits_to_bytes(bits, msb_first)))
     )
 
 def decode_raw(pulses):
-    return dict(coding='raw', data=pulses)
+    # generate hash here
+    tmphash = hex(hash(str(pulses)))
+    return dict(coding='raw', data=pulses, hash=tmphash)
 
 def decode(
     pulses,
