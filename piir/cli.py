@@ -7,6 +7,11 @@ from .prettify import prettify
 from .remote import Remote
 from . import __version__
 
+# remove seed randomization
+if not os.environ.get('PYTHONHASHSEED'):
+        os.environ['PYTHONHASHSEED'] = '0'
+        os.execv(sys.executable, ['python3'] + sys.argv)
+
 def bytes_to_hex(x):
     if isinstance(x, bytes):
         return hexify(x)
