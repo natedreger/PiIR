@@ -43,7 +43,9 @@ def record(file):
         print(f'Loading "{file}"...')
         remote = Remote(file, None)
         keys = remote.unprettify()
-        print(keys)
+        print('The following buttons have been recorded:')
+        for key in keys:
+            print(key,':',keys[key][0]['coding'],keys[key][0]['hash'])
     while True:
         name = input('Name of the key (blank to finish): ')
         if not name:
