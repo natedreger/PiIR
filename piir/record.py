@@ -28,14 +28,22 @@ def record_key(name):
     print('Press the same key again to verify.')
     data2 = receive_and_decode()
     if data2 == data1:
-        return data2
+        print('Key data match')
+        return data1
+    else:
+        print('Key data did not match, try again')
+    # record key data for both keys
     while True:
-        print('Press the same key again to verify.')
-        data3 = receive_and_decode()
-        if data3 == data1 or data3 == data2:
-            return data3
-        data1 = data2
-        data2 = data3
+        print(f'Press the key named "{name}".')
+        data1 = receive_and_decode()
+        print('Press the same key again to verify')
+        data2 = receive_and_decode()
+        if data1 == data2:
+            return data1
+        else :
+          data1[0]['alt_hash'] = data2[0]['hash']
+          data1[0]['alt_coding'] = data2[0]['coding']
+          return data1
 
 def record(file):
     keys = {}
